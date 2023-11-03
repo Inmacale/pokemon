@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-userslist',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserslistPage implements OnInit {
 
-  constructor() { }
+
+  pokemons: any[] = []
+
+  constructor(
+    private http: HttpClient) { }
 
   ngOnInit() {
+    this.http.get<any>('https://pokeapi.co/api/v2/pokemon/').subscribe(res => { console.log(res); this.pokemons = res.results; })
   }
 
 }
