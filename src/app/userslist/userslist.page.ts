@@ -19,9 +19,9 @@ export class UserslistPage implements OnInit {
     this.http.get<any>('https://pokeapi.co/api/v2/pokemon/').subscribe(res => { console.log(res); this.pokemons = res.results; })
   }
 
-  function getIdFromUrl(url: string): number {
-  const parts = url.split('/');
-  return parseInt(parts[parts.length - 2]);
-}
+  public getIdFromUrl(url: string): number {
+    const parts = url.split('/');
+    return parseInt(parts[parts.length - 2]);
+  }
 
 }
