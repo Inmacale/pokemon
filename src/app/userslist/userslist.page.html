@@ -10,7 +10,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let pokemon of pokemons" [routerLink]="['/profile/'+ pokemon.url]">
+    <ion-item *ngFor="let pokemon of pokemons" [routerLink]="['/profile/'+ getIdFromUrl(pokemon.url)]">
 
       <ion-label>{{pokemon.name}}</ion-label>
 
