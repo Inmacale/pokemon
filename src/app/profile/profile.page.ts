@@ -25,8 +25,10 @@ export class ProfilePage implements OnInit {
       this.url = this.url + id;
     }
 
-    this.htpp.get<any>(this.url).subscribe(res => { console.log(res); this.pokemon = res.results; })
+    this.htpp.get<any>(this.url).subscribe(res => { console.log(res); this.pokemon = res; })
   }
+
+
 }
 
 
