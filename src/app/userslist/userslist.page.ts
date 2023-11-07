@@ -12,13 +12,13 @@ export class UserslistPage implements OnInit {
 
   pokemons: any[] = []
 
-  results = [this.pokemons];
+  results: any[] | undefined;
 
   constructor(
     private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get<any>('https://pokeapi.co/api/v2/pokemon/').subscribe(res => { console.log(res); this.pokemons = res.results; })
+    this.http.get<any>('https://pokeapi.co/api/v2/pokemon/').subscribe(res => { console.log(res); this.results = res.results; this.pokemons = res.results })
   }
 
   public getIdFromUrl(url: string): number {
@@ -28,7 +28,7 @@ export class UserslistPage implements OnInit {
 
   public handleInput(event: any) {
     const query = event.target.value.toLowerCase();
-    this.results = this.pokemons.filter((d) => d.toLowerCase().indexOf(query) > -1);
+    this.results = this.pokemons.filter((pokemon) => pokemon.name.toLowerCase().indexOf(query) > -1);
 
   }
 
