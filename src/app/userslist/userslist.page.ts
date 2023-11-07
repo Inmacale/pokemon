@@ -12,6 +12,8 @@ export class UserslistPage implements OnInit {
 
   pokemons: any[] = []
 
+  results = [this.pokemons];
+
   constructor(
     private http: HttpClient) { }
 
@@ -22,6 +24,12 @@ export class UserslistPage implements OnInit {
   public getIdFromUrl(url: string): number {
     const parts = url.split('/');
     return parseInt(parts[parts.length - 2]);
+  }
+
+  public handleInput(event: any) {
+    const query = event.target.value.toLowerCase();
+    this.results = this.pokemons.filter((d) => d.toLowerCase().indexOf(query) > -1);
+
   }
 
 }
